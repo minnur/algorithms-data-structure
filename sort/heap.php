@@ -24,44 +24,48 @@ class HeapSort {
    */
   public function sort(array $array) {
     $count = count($array);
-    $this->heapify($array, $count);
-    $end = $count - 1;
-    while ($end > 0) {
+    // Building bottom rows of the pyramid.
+    for ($i = ($count / 2) - 1; $i >= 0; $i--) {
+      $this->siftDown($array, $i, $count);
+    }
+    // Scanning through other elements.
+    for ($i = $count - 1; $i >= 1; $i--) {
       $tmp = $array[0];
-      $array[0] = $array[$end];
-      $array[$end] = $tmp;
-      $end = $end - 1;
-      $this->siftDown($array, 0, $end);
-      print_r('<pre>');
-      print_r($array);
+      $array[0] = $array[$i];
+      $array[$i] = $tmp;
+      $this->siftDown($array, 0, $i - 1);
     }
     return $array;
   }
 
-  private function heapify(&$array, int $count) {
-    $start = floor(($count - 2) / 2);
-    print_r($start);exit;
-    while ($start >= 0) {
-     $this->siftDown($array, $start, $count - 1);
-      $start = $start - 1;
-    }
-  }
-
-  private function siftDown(array &$array, $k, $n) {
-    $e = $array[$k];
-    // loop until we won't have descendants
-    while ($k <= $n / 2) {
-      $j = $k * 2;
-      if ($j < $n && $array[$j] < $array[$j + 1]) {
-        $j++;
+  /**
+   * Forming a heap.
+   */
+  private function siftDown(array &$array, int $root, int $bottom) {
+    $maxChild = null;
+    $done = false;
+    while (($root * 2 <= $bottom) && !$done) {
+      // Checking if we're in the last row
+      if ($root * 2 == $bottom) {
+        $maxChild = $root * 2;
       }
-      if ($e >= $array[$j]) {
-        break;
+      else if ($array[$root * 2] > $array[$root * 2 + 1]) {
+        $maxChild = $root * 2;
       }
-      $array[$k] = $array[$j];
-      $k = $j;
+      else {
+        $maxChild = $root * 2 + 1;
+      }
+      // If top element is smaller than child element.
+      if ($array[$root] < $array[$maxChild]) {
+        $tmp = $array[$root];
+        $array[$root] = $array[$maxChild];
+        $array[$maxChild] = $tmp;
+        $root = $maxChild;
+      }
+      else {
+        $done = true;
+      }
     }
-    $array[$k] = $e;
   }
 
 }
