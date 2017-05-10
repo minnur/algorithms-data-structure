@@ -24,6 +24,9 @@ class HeapSort {
    */
   public function sort(array $array) {
     $count = count($array);
+    if ($count <= 1) {
+      return $array;
+    }
     // Building bottom rows of the pyramid.
     for ($i = floor($count / 2) - 1; $i >= 0; $i--) {
       $this->siftDown($array, $i, $count);
