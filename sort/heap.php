@@ -25,7 +25,7 @@ class HeapSort {
   public function sort(array $array) {
     $count = count($array);
     // Building bottom rows of the pyramid.
-    for ($i = ($count / 2) - 1; $i >= 0; $i--) {
+    for ($i = floor($count / 2) - 1; $i >= 0; $i--) {
       $this->siftDown($array, $i, $count);
     }
     // Scanning through other elements.
@@ -41,12 +41,12 @@ class HeapSort {
   /**
    * Forming a heap.
    */
-  private function siftDown(array &$array, int $root, int $bottom) {
+  private function siftDown(array &$array, int $root, int $count) {
     $maxChild = null;
     $done = false;
-    while (($root * 2 <= $bottom) && !$done) {
+    while (($root * 2 <= $count) && !$done) {
       // Checking if we're in the last row
-      if ($root * 2 == $bottom) {
+      if ($root * 2 == $count) {
         $maxChild = $root * 2;
       }
       else if ($array[$root * 2] > $array[$root * 2 + 1]) {
