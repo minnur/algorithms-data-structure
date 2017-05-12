@@ -2,8 +2,8 @@
 
 /**
  * Quick sort.
- * Quicksort is a divide and conquer algorithm: recursively split a large array in two sub-arrays, 
- * one with low elements and second with high elements.
+ *   Quicksort is a divide and conquer algorithm: recursively split a large array in two sub-arrays, 
+ *   one with low elements and second with high elements.
  *
  * Algorithm:
  *   1. Pick an element, called pivot, from the list.
@@ -26,6 +26,8 @@ class QuickSort {
     if ($count <= 1) {
       return $array;
     }
+    // Imporive pivot to get from the middle
+    // otherwise I think this will be 0(n^2) more often.
     $pivot = $array[0];
     // Left half
     $left  = [];
@@ -50,5 +52,5 @@ class QuickSort {
 }
 
 $quick = new QuickSort();
-$sorted = $quick->sort([1, 10, 3, 4, 7, 9, 2, 6, 5, 8, 22, 10, 20]);
+$sorted = $quick->sort([12, 10, 3, 4, 7, 9, 2, 6, 5, 8, 22, 10, 20, 1]);
 var_dump($sorted);

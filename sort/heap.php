@@ -2,8 +2,8 @@
 
 /**
  * Heap sort.
- * Heapsort is a comparison-based sorting algorithm to create a sorted array (or list),
- * and is part of the selection sort family.
+ *   Heapsort is a comparison-based sorting algorithm to create a sorted array (or list),
+ *   and is part of the selection sort family.
  *
  * Algorithm:
  *   1. Build a heap (heap is a tree structure with rule that parent value are bigger or equal with childrens values) out of the data.

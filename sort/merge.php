@@ -2,7 +2,7 @@
 
 /**
  * Merge sort.
- * Merge sort is a divide and conquer algorithm that was invented by John von Neumann in 1945.
+ *   Merge sort is a divide and conquer algorithm that was invented by John von Neumann in 1945.
  *
  * Algorithm:
  *   1. Divide the unsorted list into n sublists, each containing 1 element (a list of 1 element is considered sorted).
