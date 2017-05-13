@@ -16,6 +16,7 @@
 class Graph {
 
   protected $visited = [];
+  protected $queue = [];
   protected $matrix = [];
   protected $length = 0;
 
@@ -26,16 +27,15 @@ class Graph {
   }
 
   public function breadthFirst(int $initial_vertex) {
-    $queue = [];
-    array_push($queue, $initial_vertex);
+    array_push($this->queue, $initial_vertex);
     $this->visited[$initial_vertex] = 1;
     echo $initial_vertex . "\n";
-    while (count($queue)) {
-      $t = array_shift($queue);
+    while (count($this->queue)) {
+      $t = array_shift($this->queue);
       foreach ($this->matrix[$t]  as $key => $vertex) {
         if (!$this->visited[$key] && $vertex == 1) {
           $this->visited[$key] = 1;
-          array_push($queue, $key);
+          array_push($this->queue, $key);
           echo $key . "\t";
         }
       }
