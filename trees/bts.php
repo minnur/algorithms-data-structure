@@ -87,7 +87,7 @@ class BinaryTree {
         // Keep trying to insert right
         $this->insertNode($node, $subtree->right);
       }
-      else if ($node->value <= $subtree->value) {
+      else if ($node->value < $subtree->value) {
         // Keep trying to insert left
         $this->insertNode($node, $subtree->left);
       }
@@ -102,7 +102,7 @@ class BinaryTree {
     else if ($node->value > $subtree->value && isset($subtree->right)) {
       return $this->searchNode($node, $subtree->right);
     }
-    else if ($node->value <= $subtree->value && isset($subtree->left)) {
+    else if ($node->value < $subtree->value && isset($subtree->left)) {
       return $this->searchNode($node, $subtree->left);
     }
     // Not found.
