@@ -4,7 +4,10 @@
  * Stack.
  * 
  * Performance:
- *   O(n)
+ *   Run-time complexity of stack operations. For all the standard stack operations 
+ *   (push, pop, isEmpty, size), the worst-case run-time complexity can be O(1). 
+ *   push and pop are also O(1) because they only work with one end of the 
+ *   data structure - the top of the stack.
  */
 
 ini_set('xdebug.var_display_max_depth', 25);
