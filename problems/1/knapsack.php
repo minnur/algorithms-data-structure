@@ -38,7 +38,7 @@ class Knapsack {
     $this->capacity = $capacity;
   }
 
-  public function pick() {
+  public function value() {
     $items_count = count($this->items) - 1;
     for ($i = 0; $i <= $items_count; $i++) {
       for ($w = 0; $w <= $this->capacity; $w++) {
@@ -73,4 +73,4 @@ $items[] = new Item('Product 5', 80, 5);
 $capacity = 5;
 
 $ks = new Knapsack($items, $capacity);
-echo $ks->pick();
+echo $ks->value();
