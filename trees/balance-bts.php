@@ -107,7 +107,7 @@ class BinaryTree {
 
   protected function isNodeValid($node) {
     if (!is_a($node, 'Node')) {
-      throw new ErrorException('Invalid data type. Please make sure you are passing objects type of Node.', E_WARNING);
+      throw new InvalidArgumentException('Invalid data type. Please make sure you are passing objects type of Node.');
     }
     return true;
   }
