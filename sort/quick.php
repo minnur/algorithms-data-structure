@@ -26,15 +26,14 @@ class QuickSort {
     if ($count <= 1) {
       return $array;
     }
-    // Imporive pivot to get from the middle
-    // otherwise I think this will be 0(n^2) more often.
-    $pivot = $array[0];
+    $pivot = $array[floor($count / 2)];
     // Left half
-    $left  = [];
-    // Right half
-    $right = [];
+    $left = $right = [];
 
-    for ($i = 1; $i < $count; $i++) {
+    for ($i = 0; $i < $count; $i++) {
+      if ($array[$i] == $pivot) {
+        continue;
+      }
       if ($array[$i] <= $pivot) {
         $left[] = $array[$i];
       }
@@ -52,5 +51,5 @@ class QuickSort {
 }
 
 $quick = new QuickSort();
-$sorted = $quick->sort([12, 10, 3, 4, 7, 9, 2, 6, 5, 8, 22, 10, 20, 1]);
+$sorted = $quick->sort([12, 10, 3, 4, 7, 9, 2, 6, 5, 8, 22, 10, 20, 1, 21]);
 var_dump($sorted);
