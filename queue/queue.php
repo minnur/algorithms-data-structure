@@ -27,8 +27,7 @@ class Queue {
   protected $head = null;
   protected $tail = null;
 
-  public function insert($data) {
-    $item = new Item($data);
+  public function insert(Item $item) {
     if (is_null($this->head)) {
       $this->head = $item;
     }
@@ -45,19 +44,15 @@ class Queue {
   }
 
   public function delete() {
-    if (isset($this->head->data)) {
-      $tmp = $this->tail;
-      $data = $tmp->data;
-      $this->tail = $this->tail->prev;
-      if (isset($this->tail->next)) {
-        $this->tail->next = null;
+    if (!is_null($this->head)) {
+      $this->head = $this->head->next;
+      if (!empty($this->head->prev)) {
+        $this->head->prev = null;
       }
       else {
         $this->tail = $this->head = null;
       }
-      return $data;
     }
-    return false;
   }
 
   public function __toString() {
@@ -74,10 +69,11 @@ class Queue {
 
 $queue = new Queue();
 
-$queue->insert(1);
-$queue->insert(2);
-$queue->insert(3);
+$queue->insert(new Item(1));
+$queue->insert(new Item(2));
+$queue->insert(new Item(3));
 
+$queue->delete();
 $queue->delete();
 
 echo $queue;
